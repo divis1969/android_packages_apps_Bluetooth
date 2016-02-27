@@ -751,19 +751,19 @@ static bool ssrcleanupNative(JNIEnv *env, jobject obj, jboolean cleanup) {
     jboolean result = JNI_FALSE;
     if (!sBluetoothInterface) return result;
 
-    sBluetoothInterface->ssrcleanup();
-    ALOGI("%s: return from cleanup",__FUNCTION__);
-    if (cleanup == JNI_TRUE) {
-        ALOGI("%s: SSR Cleanup - DISABLE Timeout   ",__FUNCTION__);
-        if (sJniCallbacksObj) {
-            env->DeleteGlobalRef(sJniCallbacksObj);
-            sJniCallbacksObj = NULL;
-        }
-        if (sJniAdapterServiceObj) {
-            env->DeleteGlobalRef(sJniAdapterServiceObj);
-            sJniAdapterServiceObj = NULL;
-        }
-    }
+//    sBluetoothInterface->ssrcleanup();
+//    ALOGI("%s: return from cleanup",__FUNCTION__);
+//    if (cleanup == JNI_TRUE) {
+//        ALOGI("%s: SSR Cleanup - DISABLE Timeout   ",__FUNCTION__);
+//        if (sJniCallbacksObj) {
+//            env->DeleteGlobalRef(sJniCallbacksObj);
+//            sJniCallbacksObj = NULL;
+//        }
+//        if (sJniAdapterServiceObj) {
+//            env->DeleteGlobalRef(sJniAdapterServiceObj);
+//            sJniAdapterServiceObj = NULL;
+//        }
+//    }
     return JNI_TRUE;
 }
 
@@ -1056,26 +1056,27 @@ static int getSocketOptNative(JNIEnv *env, jobject obj, jint type, jint channel,
     bt_status_t status;
 
     if (!sBluetoothSocketInterface) return -1;
+    return 0;
 
-    option_val = env->GetByteArrayElements(optionVal, NULL);
-    if (option_val == NULL) {
-        ALOGE("getSocketOptNative :jniThrowIOException ");
-        jniThrowIOException(env, EINVAL);
-        return -1;
-    }
-
-    if ( (status = sBluetoothSocketInterface->get_sock_opt((btsock_type_t)type, channel,
-         (btsock_option_type_t) optionName, (void *) option_val, &option_len)) !=
-                                                           BT_STATUS_SUCCESS) {
-        ALOGE("get_sock_opt failed: %d", status);
-        goto Fail;
-    }
-    env->ReleaseByteArrayElements(optionVal, option_val, 0);
-
-    return option_len;
-Fail:
-    env->ReleaseByteArrayElements(optionVal, option_val, 0);
-    return -1;
+//    option_val = env->GetByteArrayElements(optionVal, NULL);
+//    if (option_val == NULL) {
+//        ALOGE("getSocketOptNative :jniThrowIOException ");
+//        jniThrowIOException(env, EINVAL);
+//        return -1;
+//    }
+//
+//    if ( (status = sBluetoothSocketInterface->get_sock_opt((btsock_type_t)type, channel,
+//         (btsock_option_type_t) optionName, (void *) option_val, &option_len)) !=
+//                                                           BT_STATUS_SUCCESS) {
+//        ALOGE("get_sock_opt failed: %d", status);
+//        goto Fail;
+//    }
+//    env->ReleaseByteArrayElements(optionVal, option_val, 0);
+//
+//    return option_len;
+//Fail:
+//    env->ReleaseByteArrayElements(optionVal, option_val, 0);
+//    return -1;
 }
 
 static int setSocketOptNative(JNIEnv *env, jobject obj, jint type, jint channel, jint optionName,
@@ -1086,26 +1087,27 @@ static int setSocketOptNative(JNIEnv *env, jobject obj, jint type, jint channel,
     bt_status_t status;
 
     if (!sBluetoothSocketInterface) return -1;
-
-    option_val = env->GetByteArrayElements(optionVal, NULL);
-    if (option_val == NULL) {
-        ALOGE("setSocketOptNative:jniThrowIOException ");
-        jniThrowIOException(env, EINVAL);
-        return -1;
-    }
-
-    if ( (status = sBluetoothSocketInterface->set_sock_opt((btsock_type_t)type, channel,
-         (btsock_option_type_t) optionName, (void *) option_val, optionLen)) !=
-                                                         BT_STATUS_SUCCESS) {
-        ALOGE("set_sock_opt failed: %d", status);
-        goto Fail;
-    }
-    env->ReleaseByteArrayElements(optionVal, option_val, 0);
-
     return 0;
-Fail:
-    env->ReleaseByteArrayElements(optionVal, option_val, 0);
-    return -1;
+
+//    option_val = env->GetByteArrayElements(optionVal, NULL);
+//    if (option_val == NULL) {
+//        ALOGE("setSocketOptNative:jniThrowIOException ");
+//        jniThrowIOException(env, EINVAL);
+//        return -1;
+//    }
+//
+//    if ( (status = sBluetoothSocketInterface->set_sock_opt((btsock_type_t)type, channel,
+//         (btsock_option_type_t) optionName, (void *) option_val, optionLen)) !=
+//                                                         BT_STATUS_SUCCESS) {
+//        ALOGE("set_sock_opt failed: %d", status);
+//        goto Fail;
+//    }
+//    env->ReleaseByteArrayElements(optionVal, option_val, 0);
+//
+//    return 0;
+//Fail:
+//    env->ReleaseByteArrayElements(optionVal, option_val, 0);
+//    return -1;
 }
 
 static jboolean getRemoteServicesNative(JNIEnv *env, jobject obj, jbyteArray address) {

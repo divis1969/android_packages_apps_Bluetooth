@@ -230,16 +230,16 @@ static bool initNative(JNIEnv* env, jobject obj) {
         ALOGE("Bluetooth module is not loaded");
         return JNI_FALSE;
     }
-    if (qcBluetoothInterface) {
-        qcJniCallbacksObj = env->NewGlobalRef(env->GetObjectField(obj, qcJniCallbacksField));
-        int ret = qcBluetoothInterface->initq(&sQBluetoothCallbacks);
-        if (ret != BT_STATUS_SUCCESS) {
-            ALOGE("Error while setting the callbacks \n");
-            qcBluetoothInterface = NULL;
-            return JNI_FALSE;
-        }
-        return JNI_TRUE;
-    }
+//    if (qcBluetoothInterface) {
+//        qcJniCallbacksObj = env->NewGlobalRef(env->GetObjectField(obj, qcJniCallbacksField));
+//        int ret = qcBluetoothInterface->initq(&sQBluetoothCallbacks);
+//        if (ret != BT_STATUS_SUCCESS) {
+//            ALOGE("Error while setting the callbacks \n");
+//            qcBluetoothInterface = NULL;
+//            return JNI_FALSE;
+//        }
+//        return JNI_TRUE;
+//    }
     return JNI_FALSE;
 }
 

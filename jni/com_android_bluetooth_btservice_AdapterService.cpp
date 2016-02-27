@@ -848,19 +848,19 @@ static bool ssrcleanupNative(JNIEnv *env, jobject obj, jboolean cleanup) {
     jboolean result = JNI_FALSE;
     if (!sBluetoothInterface) return result;
 
-    sBluetoothInterface->ssrcleanup();
-    ALOGI("%s: return from cleanup",__FUNCTION__);
-    if (cleanup == JNI_TRUE) {
-        ALOGI("%s: SSR Cleanup - DISABLE Timeout   ",__FUNCTION__);
-        if (sJniCallbacksObj) {
-            env->DeleteGlobalRef(sJniCallbacksObj);
-            sJniCallbacksObj = NULL;
-        }
-        if (sJniAdapterServiceObj) {
-            env->DeleteGlobalRef(sJniAdapterServiceObj);
-            sJniAdapterServiceObj = NULL;
-        }
-    }
+//    sBluetoothInterface->ssrcleanup();
+//    ALOGI("%s: return from cleanup",__FUNCTION__);
+//    if (cleanup == JNI_TRUE) {
+//        ALOGI("%s: SSR Cleanup - DISABLE Timeout   ",__FUNCTION__);
+//        if (sJniCallbacksObj) {
+//            env->DeleteGlobalRef(sJniCallbacksObj);
+//            sJniCallbacksObj = NULL;
+//        }
+//        if (sJniAdapterServiceObj) {
+//            env->DeleteGlobalRef(sJniAdapterServiceObj);
+//            sJniAdapterServiceObj = NULL;
+//        }
+//    }
     return JNI_TRUE;
 }
 

@@ -498,10 +498,10 @@ static void initializeFeaturesNative(JNIEnv *env, jobject object, jint feature_b
     }
     if (!sBluetoothHfpInterface) return ;
     if (feature_bitmask)
-        if ((status = sBluetoothHfpInterface->init_features(feature_bitmask))
-            != BT_STATUS_SUCCESS){
-            ALOGE("Failed sending feature bitmask, status: %d", status);
-        }
+//        if ((status = sBluetoothHfpInterface->init_features(feature_bitmask))
+//            != BT_STATUS_SUCCESS){
+//            ALOGE("Failed sending feature bitmask, status: %d", status);
+//        }
     return;
 }
 

@@ -388,7 +388,7 @@ static void pin_request_callback(bt_bdaddr_t *bd_addr, bt_bdname_t *bdname, uint
 
     if (sJniCallbacksObj) {
     callbackEnv->CallVoidMethod(sJniCallbacksObj, method_pinRequestCallback, addr, devname, cod,
-            min_16_digits);
+            /*min_16_digits*/false);
     }
 
     checkAndClearExceptionFromCallback(callbackEnv, __FUNCTION__);

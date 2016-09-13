@@ -1174,6 +1174,7 @@ final class HeadsetStateMachine extends StateMachine {
                     }
                     break;
                 case HeadsetHalConstants.CONNECTION_STATE_SLC_CONNECTED:
+                    /* This is a Qualcomm-specific handling, remove it now
                     int RemoteBrsf = getRemoteFeaturesNative(getByteAddress(device));
                     Log.d(TAG, "Remote Brsf: " + RemoteBrsf + " for device: " + device);
                     mHeadsetBrsf.put(device, RemoteBrsf);
@@ -1181,7 +1182,7 @@ final class HeadsetStateMachine extends StateMachine {
                         Log.d(TAG, "Removing device " + device +
                                    " conn retry entry since we got SLC");
                         mRetryConnect.remove(device);
-                    }
+                    }*/
                     processSlcConnected();
                     break;
                 case HeadsetHalConstants.CONNECTION_STATE_CONNECTED:
